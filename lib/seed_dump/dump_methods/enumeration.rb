@@ -10,6 +10,10 @@ class SeedDump
 
         num_of_batches, batch_size, last_batch_size = batch_params_from(records, options)
 
+        # add info of all serialized columns to options
+        options[:serialized_columns] = records.respond_to?(:serialized_attributes) ?
+            records.serialized_attributes : {}
+
         # Loop through each batch
         (1..num_of_batches).each do |batch_number|
 
