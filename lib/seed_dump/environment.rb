@@ -34,6 +34,7 @@ class SeedDump
                       append: append,
                       batch_size: (env['BATCH_SIZE'] ? env['BATCH_SIZE'].to_i : nil),
                       exclude: (env['EXCLUDE'] ? env['EXCLUDE'].split(',').map {|e| e.strip.to_sym} : nil),
+                      validate_while_import: (env['VALIDATE_WHILE_IMPORT'] != 'false'),
                       file: (env['FILE'] || 'db/seeds.rb'),
                       import: (env['IMPORT'] == 'true'))
 

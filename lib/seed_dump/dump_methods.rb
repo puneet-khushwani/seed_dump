@@ -87,7 +87,11 @@ class SeedDump
         io.write(",\n  ") unless last_batch
       end
 
-      io.write("\n])\n")
+      io.write("\n]")
+
+      io.write(', {validate: false}') unless options[:validate_while_import]
+
+      io.write(")\n")
 
       if options[:file].present?
         nil
